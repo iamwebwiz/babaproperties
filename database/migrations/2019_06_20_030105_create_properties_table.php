@@ -19,7 +19,6 @@ class CreatePropertiesTable extends Migration
             $table->string('type');
             $table->string('address');
             $table->float('price');
-            $table->string('address');
             $table->string('image1');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
