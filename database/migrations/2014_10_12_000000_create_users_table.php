@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->float('annual_income')->nullable();
             $table->float('occupation')->nullable();
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
