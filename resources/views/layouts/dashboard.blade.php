@@ -1,7 +1,5 @@
-
 <!doctype html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,22 +7,25 @@
 
     <!-- Libs CSS -->
     <link rel="stylesheet" href="/assets/fonts/feather/feather.min.css">
-    <link rel="stylesheet" href="/assets/libs/highlight.js/styles/vs2015.css">
-    <link rel="stylesheet" href="/assets/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="/assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="/assets/libs/flatpickr/dist/flatpickr.min.css">
 
     <!-- Theme CSS -->
-
     <link rel="stylesheet" href="/assets/css/theme.min.css" id="stylesheetLight">
 
     <!-- Toastr -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <title>@yield('title') - {{ config('app.name') }}</title>
+
+    <style>
+      *,
+      html,
+      body {
+        font-size: 14pt;
+      }
+    </style>
   </head>
   <body>
-
     <!-- NAVIGATION
     ================================================== -->
 
@@ -88,12 +89,6 @@
     <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/libs/chart.js/dist/Chart.min.js"></script>
-    <script src="/assets/libs/highlightjs/highlight.pack.min.js"></script>
-    <script src="/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="/assets/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <script src="/assets/libs/list.js/dist/list.min.js"></script>
-    <script src="/assets/libs/quill/dist/quill.min.js"></script>
-    <script src="/assets/libs/dropzone/dist/min/dropzone.min.js"></script>
     <script src="/assets/libs/select2/dist/js/select2.min.js"></script>
     <script src="/assets/libs/chart.js/Chart.extension.min.js"></script>
 
