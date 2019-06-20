@@ -12,4 +12,9 @@ class Property extends Model
     {
         return $this->belongsToMany(User::class, 'interests', 'property_id', 'user_id');
     }
+
+    public function tenant()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
