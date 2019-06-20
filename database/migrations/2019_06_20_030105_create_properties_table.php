@@ -23,7 +23,15 @@ class CreatePropertiesTable extends Migration
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
             $table->text('summary');
+            $table->boolean('available')->default(true);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->dateTime('tenancy_expires_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

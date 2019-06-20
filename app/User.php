@@ -40,4 +40,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Property::class, 'interests', 'user_id', 'property_id');
     }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
 }
