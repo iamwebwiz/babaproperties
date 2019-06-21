@@ -8,6 +8,11 @@ class Property extends Model
 {
     protected $guarded = [];
 
+    public function getPriceAttribute($value)
+    {
+        return number_format($value);
+    }
+
     public function getTypeAttribute($value)
     {
         switch ($value) {
