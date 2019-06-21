@@ -24,6 +24,9 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * Log a user out of the application
+     */
     public function logout()
     {
         auth()->logout();
