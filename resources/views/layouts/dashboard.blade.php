@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Real estates for rent at low prices">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Libs CSS -->
     <link rel="stylesheet" href="/assets/fonts/feather/feather.min.css">
@@ -12,18 +13,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="/assets/css/theme.min.css" id="stylesheetLight">
 
-    <!-- Toastr -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
     <title>@yield('title') - {{ config('app.name') }}</title>
-
-    <style>
-      *,
-      html,
-      body {
-        font-size: 14pt;
-      }
-    </style>
   </head>
   <body>
     <!-- NAVIGATION
@@ -94,9 +84,6 @@
 
     <!-- Theme JS -->
     <script src="/assets/js/theme.min.js"></script>
-
-    <!-- Toastr -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     @yield('scripts')
 
