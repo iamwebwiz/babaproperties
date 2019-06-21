@@ -10,7 +10,8 @@ class Property extends Model
 
     public function applicants()
     {
-        return $this->belongsToMany(User::class, 'interests', 'property_id', 'user_id');
+        return $this->belongsToMany(User::class, 'interests', 'property_id', 'user_id')
+            ->withTimestamps();
     }
 
     public function tenant()
