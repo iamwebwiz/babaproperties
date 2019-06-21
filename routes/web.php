@@ -39,6 +39,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     // users routes
     Route::prefix('users')->group(function () {
         Route::get('/', 'UserController@index')->name('admin.users');
+        Route::get('/{id}', 'UserController@show')->name('admin.users.show');
+        Route::delete('/{user}', 'UserController@destroy')->name('admin.users.destroy');
+        Route::get('/{id}/properties/{propertyId}/terminate', 'UserController@terminateTenancy')->name('admin.users.teminate_tenancy');
     });
 });
 
