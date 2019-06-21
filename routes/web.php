@@ -31,6 +31,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
         Route::get('/{id}/applicants/{userId}/approve', 'PropertyController@approveInterest')
             ->name('admin.properties.interests.approve');
         Route::delete('/{property}', 'PropertyController@destroy')->name('admin.properties.destroy');
+        Route::patch('/{property}', 'PropertyController@update')->name('admin.properties.update');
+        Route::get('/create', 'PropertyController@create')->name('admin.properties.create');
+        Route::post('/create', 'PropertyController@store');
     });
 
     // users routes

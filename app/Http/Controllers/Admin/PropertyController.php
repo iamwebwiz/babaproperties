@@ -8,6 +8,7 @@ use App\Property;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PropertyController extends Controller
 {
@@ -16,7 +17,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::paginate();
+        $properties = Property::orderBy('created_at', 'DESC')->paginate();
 
         return view('admin.properties.index', compact('properties'));
     }
@@ -81,6 +82,93 @@ class PropertyController extends Controller
         $property->delete();
 
         session()->flash('info', 'Property has been removed.');
+        return redirect()->route('admin.properties');
+    }
+
+    /**
+     * Update a property
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param App\Property $property
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Property $property)
+    {
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'price' => 'required',
+            'summary' => 'required',
+            'type' => 'required',
+            'address' => 'required|string',
+        ]);
+
+        $property->title = $request->title;
+        $property->price = $request->price;
+        $property->type = $request->type;
+        $property->summary = $request->summary;
+        $property->address = $request->address;
+        $property->available = (bool) $request->availability;
+        $property->save();
+
+        session()->flash('info', 'Property has been updated.');
+        return redirect()->back();
+    }
+
+    /**
+     * Show new proeprty page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function create()
+    {
+        return view('admin.properties.create');
+    }
+
+    /**
+     * Store a new property
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'type' => 'required|string',
+            'price' => 'required',
+            'summary' => 'required',
+            'address' => 'required|string',
+        ]);
+
+        $property = new Property();
+
+        if ($request->hasFile('image1')) {
+            $image1 = Str::random(5) . time() . '.' . $request->file('image1')->getClientOriginalExtension();
+            $request->file('image1')->move(public_path('images/properties'), $image1);
+            $property->image1 = $image1;
+        }
+
+        if ($request->hasFile('image2')) {
+            $image2 = Str::random(5) . time() . '.' . $request->file('image2')->getClientOriginalExtension();
+            $request->file('image2')->move(public_path('images/properties'), $image2);
+            $property->image2 = $image2;
+        }
+
+        if ($request->hasFile('image3')) {
+            $image3 = Str::random(5) . time() . '.' . $request->file('image3')->getClientOriginalExtension();
+            $request->file('image3')->move(public_path('images/properties'), $image3);
+            $property->image3 = $image3;
+        }
+
+        $property->title = $request->title;
+        $property->price = (float) $request->price;
+        $property->address = $request->address;
+        $property->type = $request->type;
+        $property->summary = $request->summary;
+        $property->available = (bool) $request->availability;
+        $property->save();
+
+        session()->flash('success', 'Property has been added successfully.');
         return redirect()->route('admin.properties');
     }
 }

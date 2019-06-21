@@ -8,6 +8,9 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
+        <div class="card-header">
+          <a href="{{ route('admin.properties.create') }}" class="btn btn-primary">Add Property</a>
+        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-striped">
@@ -28,7 +31,7 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $property->title }}</td>
                     <td>{{ $property->type }}</td>
-                    <td>{{ $property->price }}</td>
+                    <td>{{ number_format($property->price) }}</td>
                     <td>
                       {!! $property->available
                         ? "<span class='badge badge-success'>Available</span>"

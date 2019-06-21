@@ -26,16 +26,16 @@
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ $property->image1 }}" class="d-block w-100" alt="{{ $property->title }}">
+                    <img src="/images/properties/{{ $property->image1 }}" class="d-block w-100" alt="{{ $property->title }}">
                   </div>
                   @if ($property->image2)
                     <div class="carousel-item">
-                      <img src="{{ $property->image2 }}" class="d-block w-100" alt="{{ $property->title }}">
+                      <img src="/images/properties/{{ $property->image2 }}" class="d-block w-100" alt="{{ $property->title }}">
                     </div>
                   @endif
                   @if ($property->image2)
                     <div class="carousel-item">
-                      <img src="{{ $property->image3 }}" class="d-block w-100" alt="{{ $property->title }}">
+                      <img src="/images/properties/{{ $property->image3 }}" class="d-block w-100" alt="{{ $property->title }}">
                     </div>
                   @endif
                 </div>
@@ -56,7 +56,7 @@
           <div class="row">
             <div class="col-12">
               <h2>
-                <span class="float-left">&#8358;{{ $property->price }}</span>
+                <span class="float-left">&#8358;{{ number_format($property->price) }}</span>
                 <span class="float-right">
                   {!! $property->available
                     ? "<span class='badge badge-success'>Available</span>"
@@ -110,6 +110,7 @@
           <hr>
           <div class="row">
             <div class="col-12">
+              <button class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#editPropertyModal">EDIT PROPERTY</button>
               <form action="{{ route('admin.properties.destroy', $property->id) }}" method="post">
                 @csrf
                 @method('DELETE')
@@ -121,4 +122,6 @@
       </div>
     </div>
   </div>
+
+  @include('admin.properties.partials.edit')
 @endsection

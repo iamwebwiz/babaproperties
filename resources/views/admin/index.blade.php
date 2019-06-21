@@ -18,7 +18,7 @@
               </h6>
               <!-- Heading -->
               <span class="h2 mb-0">
-                3
+                {{ $properties->count() }}
               </span>
             </div>
             <div class="col-auto">
@@ -42,7 +42,7 @@
               </h6>
               <!-- Heading -->
               <span class="h2 mb-0">
-                2
+                {{ $users->count() }}
               </span>
             </div>
             <div class="col-auto">
