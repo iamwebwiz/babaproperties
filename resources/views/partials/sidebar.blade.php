@@ -13,8 +13,8 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="#">
-      <span class="fe fe-tag"></span> Listings
+    <a class="nav-link" href="{{ route('admin.properties') }}">
+      <span class="fe fe-tag"></span> Properties
     </a>
   </li>
 
