@@ -8,6 +8,8 @@
 
 </div>
 
+@include('partials.alerts')
+
 @yield('content')
 
 @include('partials.footer')
