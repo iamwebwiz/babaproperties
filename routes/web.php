@@ -13,9 +13,15 @@
 
 Route::get('/', 'FrontendController@index');
 
+Route::get('/property/{property}/show', 'FrontendController@showPropertyDetails');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/me/properties', 'HomeController@showUserProperties')->name('user.properties');
+
+Route::post('/me/properties/{id}/apply', 'HomeController@applyForProperty')->name('user.indicate_interest');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
     Route::get('/dashboard', 'HomeController@index')->name('admin.dashboard');

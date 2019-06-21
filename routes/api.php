@@ -14,4 +14,5 @@
 Route::namespace ('Api')->group(function () {
     Route::get('/home', 'FrontendController@index');
     Route::get('/filter', 'FrontendController@filterProperties');
+    Route::get('/property/{id}', 'FrontendController@fetchProperty');
 });

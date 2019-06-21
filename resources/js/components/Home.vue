@@ -109,10 +109,10 @@
           <div
             v-if="properties.length"
             v-for="(property, index) in properties"
-            :key="property.id"
+            :key="index"
             class="col-md-6 col-lg-4 mb-4"
           >
-            <a href="#" class="prop-entry d-block">
+            <a :href="`/property/${property.id}/show`" class="prop-entry d-block">
               <figure>
                 <img
                   :src="`/images/properties/${property.image1}`"
